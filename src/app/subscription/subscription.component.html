@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()"> 
+<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
     <div class="container">
         <mat-toolbar class="subscriptionToolbar">
             <span class="fill-remaining-space"></span>
@@ -14,23 +14,25 @@
                 <label>Client Name</label>
                 <mat-form-field appearance="fill" floatControl="never">
                     <mat-select formControlName="clientNamesub" placeholder="Select a Client">
-                      <mat-option>None</mat-option>
-                      <ng-container *ngFor="let clientNamesub of clientsName">
-                        <mat-option value="{{clientNamesub.id}}">{{clientNamesub.value}}</mat-option>
-                      </ng-container>
+                        <mat-option>None</mat-option>
+                        <ng-container *ngFor="let clientNamesub of clientsName">
+                            <mat-option value="{{clientNamesub.id}}">{{clientNamesub.value}}</mat-option>
+                        </ng-container>
                     </mat-select>
                 </mat-form-field>
                 <label>Number of Active DP *</label>
                 <mat-form-field appearance="fill" floatControl="never">
                     <input formControlName="noActiveDP" matInput placeholder="Enter a number" value="word.txt" id="dp">
-                    <mat-error *ngIf="service.form.controls['noActiveDP'].errors?.required">This field is mandatory.</mat-error>
-                    <mat-error *ngIf="service.form.controls['noActiveDP'].errors?.pattern">Only numbers are allowed</mat-error>
+                    <mat-error *ngIf="service.form.controls['noActiveDP'].errors?.required">This field is mandatory.
+                    </mat-error>
+                    <mat-error *ngIf="service.form.controls['noActiveDP'].errors?.pattern">Only numbers are allowed
+                    </mat-error>
                 </mat-form-field>
                 <label>Subscription Plan</label>
                 <mat-radio-group formControlName="subPlan">
-                        <mat-radio-button value="1">Basic</mat-radio-button>
-                        <mat-radio-button value="2">Pro</mat-radio-button>
-                        <mat-radio-button value="3">Enterprise</mat-radio-button>
+                    <mat-radio-button value="1">Basic</mat-radio-button>
+                    <mat-radio-button value="2">Pro</mat-radio-button>
+                    <mat-radio-button value="3">Enterprise</mat-radio-button>
                 </mat-radio-group>
                 <mat-form-field appearance="fill">
                     <mat-label>From Date</mat-label>
@@ -47,35 +49,12 @@
             </div>
         </mat-grid-tile>
     </mat-grid-list>
-        <div class = "button-row">
-            <div class="center">
-                <button mat-raised-button color="primary" type="submit">Submit</button>
-                <button mat-raised-button color="primary" (click)="onClear()">Clear</button>
-                <button mat-raised-button color="primary" type="button" id="download-btn">Download</button>
-            </div>
+    <div class="button-row">
+        <div class="center">
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+            <button mat-raised-button color="primary" (click)="onClear()">Clear</button>
+            <!-- <input type="button" (click)="download()" value="Download Employee Data"/> -->
         </div>
-        <script>
-            function download(name, dp, sdate, edate, text) {
-                var element = document.createElement('a');
-                element.style.display = 'none';
-                //Define  the data of the file using encodeURIComponent
-                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text))
-                    ;
-                //add the download attribute of hidden link
-                element.setAttribute('download', name, dp, sdate, edate);
-                document.body.appendChild(element);
-                //simulate click of the created link 
-                element.click();
-                document.body.removeChild(element);
-            }
-            //When the user clicks the download button, start download
-            //Start file download.
-            document.getElementById("download-btn").addEventListener("click", function(){
-                var name = document.getElementById("name").value;
-                var activeDP = document.getElementById("dp").value;
-                var sdate = document.getElementById("sdate").value;
-                var edate = document.getElementById("edate").value;
-                download(name, activeDP, sdate, edate);
-            }, false);
-        </script>
+    </div>
+
 </form>

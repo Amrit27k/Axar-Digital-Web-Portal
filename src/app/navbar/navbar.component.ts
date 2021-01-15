@@ -166,12 +166,13 @@ export class NavbarComponent implements OnInit {
             'Good Bye!',
             'You have logged out!',
             'success'
-          )
-        let des = confirm("This action will cause you to logout and will take you to the login page again");
-        if (des == true) {
-            sessionStorage.clear();
-            this.router.navigateByUrl("/");
-        }
+        )
+        // let des = confirm("This action will cause you to logout and will take you to the login page again");
+        // if (des == true) {
+            
+        // }
+        sessionStorage.clear();
+        this.router.navigateByUrl("/");
     }
 
     button_subscription = () => {
